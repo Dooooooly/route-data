@@ -14,50 +14,87 @@ h2{text-align:center;font-size:20px;margin-bottom:6px}
 .section-info{font-size:12px;color:#888;margin-bottom:10px}
 .navi-btn{display:block;width:100%;padding:12px 0;background:#FFE500;color:#000;font-weight:bold;font-size:14px;border-radius:8px;text-align:center;text-decoration:none;box-sizing:border-box;border:1px solid #FFD700}
 .navi-btn:hover{background:#FFD700}
+.loading{text-align:center;color:#999;padding:20px}
+.error{text-align:center;color:#e74c3c;padding:20px;background:#fde8e8;border-radius:8px}
 .footer{text-align:center;color:#aaa;font-size:11px;margin-top:16px}
 </style>
 </head>
 <body>
 <div class="card">
 <h2>🚗 구간별 길찾기</h2>
-<div class="summary" id="st"></div>
-<div id="rl"></div>
+<div class="summary" id="st">⏳ 데이터 불러오는 중...</div>
+<div id="rl"><div class="loading">⏳ 로딩 중...</div></div>
 <div class="footer">버튼 클릭 → 카카오맵 길찾기</div>
 </div>
-<script>
-(function(){
-var data = [
-{"from":"용산구청","fromY":37.5326,"fromX":126.99,"to":"자치12-01","toY":37.5329415889431,"toX":126.992426678691,"km":0.55,"min":2.9},
-{"from":"자치12-01","fromY":37.5329415889431,"fromX":126.992426678691,"to":"자치02-01","toY":37.5457761867454,"toX":126.983148400978,"km":2.69,"min":10.6},
-{"from":"자치02-01","fromY":37.5457761867454,"fromX":126.983148400978,"to":"자치01-01","toY":37.5515400844887,"toX":126.978849569448,"km":1.59,"min":8.9},
-{"from":"자치01-01","fromY":37.5515400844887,"fromX":126.978849569448,"to":"자치03-01","toY":37.5492770111895,"toX":126.973333802128,"km":0.89,"min":3.9},
-{"from":"자치03-01","fromY":37.5492770111895,"fromX":126.973333802128,"to":"자치04-01","toY":37.5516675456978,"toX":126.967593200945,"km":3.05,"min":16.4},
-{"from":"자치04-01","fromY":37.5516675456978,"fromX":126.967593200945,"to":"자치07-01","toY":37.5413742189167,"toX":126.962285392859,"km":1.67,"min":8.2},
-{"from":"자치07-01","fromY":37.5413742189167,"fromX":126.962285392859,"to":"교지06-01","toY":37.5349677812745,"toX":126.959927790082,"km":2.39,"min":12.8},
-{"from":"교지06-01","fromY":37.5349677812745,"fromX":126.959927790082,"to":"자치11-01","toY":37.5251265802093,"toX":126.957071719901,"km":2.21,"min":6.8},
-{"from":"자치11-01","fromY":37.5251265802093,"fromX":126.957071719901,"to":"교지09-01","toY":37.536137857859,"toX":126.97192248218,"km":2.67,"min":10.4}
-];
 
-var tk=0, tm=0, h='';
-for(var i=0; i<data.length; i++){
-    var v = data[i];
-    tk += v.km;
-    tm += v.min;
-    
-    // ★★★★★ 수정된 URL: 출발지 설정됨 ★★★★★
-    var u = 'https://map.kakao.com/link/to/' 
-            + encodeURIComponent(v.to) + ',' + v.toY + ',' + v.toX 
-            + '/from/' + encodeURIComponent(v.from) + ',' + v.fromY + ',' + v.fromX;
-    
-    h += '<div class="section">'
-        + '<div class="section-title">' + (i+1) + '. ' + v.from + ' ➔ ' + v.to + '</div>'
-        + '<div class="section-info">' + v.km.toFixed(1) + 'km / 약 ' + Math.round(v.min) + '분</div>'
-        + '<a href="' + u + '" class="navi-btn" target="_blank">🚗 카카오맵 길찾기</a>'
-        + '</div>';
+<script>
+// ============================================
+// data.json 에서 데이터 불러오기
+// ============================================
+
+// URL에서 타임스탬프 읽기 (캐시 방지)
+const urlParams = new URLSearchParams(window.location.search);
+const v = urlParams.get('v') || Date.now();
+
+fetch('data.json?v=' + v)
+    .then(function(response) {
+        if (!response.ok) throw new Error('데이터를 불러올 수 없습니다.');
+        return response.json();
+    })
+    .then(function(data) {
+        renderData(data);
+    })
+    .catch(function(error) {
+        document.getElementById('rl').innerHTML = 
+            '<div class="error">❌ ' + error.message + '<br><small>data.json 파일이 없거나 손상되었습니다.</small></div>';
+        document.getElementById('st').textContent = '⚠️ 데이터 로드 실패';
+        console.error('Fetch error:', error);
+    });
+
+// ============================================
+// 데이터 렌더링 함수
+// ============================================
+function renderData(data) {
+    if (!data || data.length === 0) {
+        document.getElementById('rl').innerHTML = 
+            '<div class="error">⚠️ 표시할 경로 데이터가 없습니다.</div>';
+        document.getElementById('st').textContent = '데이터 없음';
+        return;
+    }
+
+    var totalKm = 0;
+    var totalMin = 0;
+    var html = '';
+
+    for (var i = 0; i < data.length; i++) {
+        var v = data[i];
+        totalKm += v.km || 0;
+        totalMin += v.min || 0;
+
+        // 출발지/도착지 이름 (없으면 '출발지'/'도착지'로 표시)
+        var fromName = v.from || '출발지';
+        var toName = v.to || '도착지';
+        var fromY = v.fromY || 0;
+        var fromX = v.fromX || 0;
+        var toY = v.toY || 0;
+        var toX = v.toX || 0;
+
+        // 카카오맵 길찾기 URL (출발지 → 도착지)
+        var url = 'https://map.kakao.com/link/to/' 
+            + encodeURIComponent(toName) + ',' + toY + ',' + toX 
+            + '/from/' + encodeURIComponent(fromName) + ',' + fromY + ',' + fromX;
+
+        html += '<div class="section">'
+            + '<div class="section-title">' + (i + 1) + '. ' + fromName + ' ➔ ' + toName + '</div>'
+            + '<div class="section-info">' + (v.km || 0).toFixed(1) + 'km / 약 ' + Math.round(v.min || 0) + '분</div>'
+            + '<a href="' + url + '" class="navi-btn" target="_blank">🚗 카카오맵 길찾기</a>'
+            + '</div>';
+    }
+
+    document.getElementById('rl').innerHTML = html;
+    document.getElementById('st').textContent = 
+        '총 ' + data.length + '개소 | ' + totalKm.toFixed(1) + 'km | 약 ' + Math.round(totalMin) + '분';
 }
-document.getElementById('rl').innerHTML = h;
-document.getElementById('st').textContent = '총 ' + data.length + '개소 | ' + tk.toFixed(1) + 'km | 약 ' + Math.round(tm) + '분';
-})();
 </script>
 </body>
 </html>
