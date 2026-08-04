@@ -1,314 +1,53 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🚗 경로 데이터 - 구간별 길찾기</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
-            background: #f0f2f5;
-            padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        h1 {
-            color: #4A90D9;
-            font-size: 24px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .subtitle {
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e0e4ea;
-            padding-bottom: 12px;
-        }
-        .summary-box {
-            background: #e8f0fe;
-            border-radius: 10px;
-            padding: 14px 18px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .summary-item {
-            text-align: center;
-        }
-        .summary-item .num {
-            font-size: 22px;
-            font-weight: 700;
-            color: #4A90D9;
-        }
-        .summary-item .label {
-            font-size: 13px;
-            color: #666;
-        }
-        .route-item {
-            background: white;
-            border-radius: 10px;
-            padding: 14px 18px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            transition: transform 0.15s;
-        }
-        .route-item:hover {
-            transform: translateX(4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .route-info {
-            flex: 1;
-            min-width: 150px;
-        }
-        .route-info .from {
-            font-weight: 600;
-            color: #4A90D9;
-        }
-        .route-info .to {
-            font-weight: 600;
-            color: #e74c3c;
-        }
-        .route-info .arrow {
-            margin: 0 6px;
-            color: #999;
-        }
-        .route-info .detail {
-            font-size: 13px;
-            color: #888;
-            margin-top: 2px;
-        }
-        .btn-group {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .btn {
-            padding: 6px 14px;
-            border: none;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            transition: all 0.2s;
-        }
-        .btn-kakao {
-            background: #FEE500;
-            color: #3A1D1D;
-        }
-        .btn-kakao:hover {
-            background: #F7D600;
-            transform: scale(1.02);
-        }
-        .btn-naver {
-            background: #03C75A;
-            color: white;
-        }
-        .btn-naver:hover {
-            background: #02B350;
-            transform: scale(1.02);
-        }
-        .btn-google {
-            background: #4285F4;
-            color: white;
-        }
-        .btn-google:hover {
-            background: #3367D6;
-            transform: scale(1.02);
-        }
-        .btn-tmap {
-            background: #0068FF;
-            color: white;
-        }
-        .btn-tmap:hover {
-            background: #0055CC;
-            transform: scale(1.02);
-        }
-        .btn-kakao-nav {
-            background: #4A90D9;
-            color: white;
-        }
-        .btn-kakao-nav:hover {
-            background: #357ABD;
-            transform: scale(1.02);
-        }
-        .loading {
-            text-align: center;
-            color: #999;
-            padding: 40px 0;
-        }
-        .error {
-            text-align: center;
-            color: #e74c3c;
-            padding: 20px;
-            background: #fde8e8;
-            border-radius: 8px;
-        }
-        .footer {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 12px;
-            color: #bbb;
-            border-top: 1px solid #eee;
-            padding-top: 16px;
-        }
-        @media (max-width: 600px) {
-            .route-item {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .btn-group {
-                justify-content: center;
-                margin-top: 6px;
-            }
-            .summary-box {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+<meta charset='utf-8'/>
+<meta name='viewport' content='width=device-width,initial-scale=1.0'>
+<title>구간별 길찾기</title>
+<style>
+body{font-family:sans-serif;padding:20px;background:#f5f5f5}
+.card{background:#fff;padding:24px 18px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,0.1);max-width:480px;margin:0 auto}
+h2{text-align:center;font-size:20px;margin-bottom:6px}
+.summary{text-align:center;color:#666;font-size:13px;margin-bottom:20px}
+.section{margin-bottom:14px;padding:14px;background:#f9f9f9;border-radius:12px}
+.section-title{font-weight:bold;font-size:14px;margin-bottom:4px}
+.section-info{font-size:12px;color:#888;margin-bottom:10px}
+.navi-btn{display:block;width:100%;padding:12px 0;background:#FEE500;color:#000;font-weight:bold;font-size:14px;border-radius:8px;text-align:center;text-decoration:none;box-sizing:border-box}
+.footer{text-align:center;color:#aaa;font-size:11px;margin-top:16px}
+</style>
 </head>
 <body>
+<div class="card">
+<h2>🚗 구간별 길찾기</h2>
+<div class="summary" id="st"></div>
+<div id="rl"></div>
+<div class="footer">버튼 클릭 → 카카오맵</div>
+</div>
+<script>
+(function(){
+var data = [
+{"from":"용산구청","fromY":37.5326,"fromX":126.99,"to":"자치12-01","toY":37.5329415889431,"toX":126.992426678691,"km":0.55,"min":2.9},
+{"from":"자치12-01","fromY":37.5329415889431,"fromX":126.992426678691,"to":"자치02-01","toY":37.5457761867454,"toX":126.983148400978,"km":2.69,"min":10.6},
+{"from":"자치02-01","fromY":37.5457761867454,"fromX":126.983148400978,"to":"자치01-01","toY":37.5515400844887,"toX":126.978849569448,"km":1.59,"min":8.9},
+{"from":"자치01-01","fromY":37.5515400844887,"fromX":126.978849569448,"to":"자치03-01","toY":37.5492770111895,"toX":126.973333802128,"km":0.89,"min":3.9},
+{"from":"자치03-01","fromY":37.5492770111895,"fromX":126.973333802128,"to":"자치04-01","toY":37.5516675456978,"toX":126.967593200945,"km":3.05,"min":16.4},
+{"from":"자치04-01","fromY":37.5516675456978,"fromX":126.967593200945,"to":"자치07-01","toY":37.5413742189167,"toX":126.962285392859,"km":1.67,"min":8.2},
+{"from":"자치07-01","fromY":37.5413742189167,"fromX":126.962285392859,"to":"교지06-01","toY":37.5349677812745,"toX":126.959927790082,"km":2.39,"min":12.8},
+{"from":"교지06-01","fromY":37.5349677812745,"fromX":126.959927790082,"to":"자치11-01","toY":37.5251265802093,"toX":126.957071719901,"km":2.21,"min":6.8},
+{"from":"자치11-01","fromY":37.5251265802093,"fromX":126.957071719901,"to":"교지09-01","toY":37.536137857859,"toX":126.97192248218,"km":2.67,"min":10.4}
+];
 
-    <h1>🚗 구간별 길찾기</h1>
-    <div class="subtitle">📌 각 구간의 출발지 ↔ 도착지 길찾기 링크입니다</div>
-
-    <!-- 요약 -->
-    <div class="summary-box" id="summaryBox">
-        <div class="summary-item">
-            <div class="num" id="totalKm">0</div>
-            <div class="label">총 거리 (km)</div>
-        </div>
-        <div class="summary-item">
-            <div class="num" id="totalMin">0</div>
-            <div class="label">총 시간 (분)</div>
-        </div>
-        <div class="summary-item">
-            <div class="num" id="totalPlaces">0</div>
-            <div class="label">방문지 수</div>
-        </div>
-    </div>
-
-    <!-- 데이터 목록 -->
-    <div id="routeList">
-        <div class="loading">⏳ 데이터를 불러오는 중...</div>
-    </div>
-
-    <div class="footer">
-        🔗 데이터 업데이트: <span id="updateTime">-</span>
-    </div>
-
-    <script>
-        // ============================================
-        // 1. URL에서 타임스탬프 읽기 (캐시 방지)
-        // ============================================
-        const urlParams = new URLSearchParams(window.location.search);
-        const v = urlParams.get('v') || Date.now();
-
-        // ============================================
-        // 2. 데이터 로드
-        // ============================================
-        fetch(`data.json?v=${v}`)
-            .then(response => {
-                if (!response.ok) throw new Error('데이터를 불러올 수 없습니다.');
-                return response.json();
-            })
-            .then(data => {
-                renderData(data);
-            })
-            .catch(error => {
-                document.getElementById('routeList').innerHTML = `
-                    <div class="error">
-                        ❌ ${error.message}<br>
-                        <small>data.json 파일이 없거나 손상되었습니다.</small>
-                    </div>
-                `;
-                console.error('Fetch error:', error);
-            });
-
-        // ============================================
-        // 3. 데이터 렌더링
-        // ============================================
-        function renderData(data) {
-            if (!data || data.length === 0) {
-                document.getElementById('routeList').innerHTML = `
-                    <div class="error">⚠️ 표시할 경로 데이터가 없습니다.</div>
-                `;
-                return;
-            }
-
-            // 요약 정보
-            let totalKm = 0;
-            let totalMin = 0;
-            data.forEach(item => {
-                totalKm += parseFloat(item.km) || 0;
-                totalMin += parseFloat(item.min) || 0;
-            });
-
-            document.getElementById('totalKm').textContent = totalKm.toFixed(1);
-            document.getElementById('totalMin').textContent = Math.round(totalMin);
-            document.getElementById('totalPlaces').textContent = data.length;
-
-            // 업데이트 시간
-            document.getElementById('updateTime').textContent = new Date().toLocaleString();
-
-            // 목록 렌더링
-            const container = document.getElementById('routeList');
-            container.innerHTML = data.map((item, index) => {
-                const from = item.from || '출발지';
-                const to = item.to || '도착지';
-                const km = parseFloat(item.km) || 0;
-                const min = parseFloat(item.min) || 0;
-                const fromY = item.fromY || 0;
-                const fromX = item.fromX || 0;
-                const toY = item.toY || 0;
-                const toX = item.toX || 0;
-
-                // 길찾기 URL 생성
-                const kakaoUrl = `https://map.kakao.com/?sName=${encodeURIComponent(from)}&eName=${encodeURIComponent(to)}`;
-                const kakaoCoordUrl = `https://map.kakao.com/link/to/${encodeURIComponent(to)},${toY},${toX}`;
-                const naverUrl = `https://map.naver.com/p/search/${encodeURIComponent(to)}`;
-                const googleUrl = `https://www.google.com/maps/dir/${encodeURIComponent(from)}/${encodeURIComponent(to)}`;
-                const tmapUrl = `https://map.tmap.co.kr/?sName=${encodeURIComponent(from)}&eName=${encodeURIComponent(to)}`;
-
-                return `
-                    <div class="route-item">
-                        <div class="route-info">
-                            <div>
-                                <span class="from">${index+1}. ${from}</span>
-                                <span class="arrow">→</span>
-                                <span class="to">${to}</span>
-                            </div>
-                            <div class="detail">
-                                📏 ${km.toFixed(1)}km · ⏱️ ${Math.round(min)}분
-                            </div>
-                        </div>
-                        <div class="btn-group">
-                            <a href="${kakaoCoordUrl}" target="_blank" class="btn btn-kakao-nav">🗺️ 카카오맵</a>
-                            <a href="${kakaoUrl}" target="_blank" class="btn btn-kakao">💬 카톡 공유</a>
-                            <a href="${naverUrl}" target="_blank" class="btn btn-naver">N 네이버</a>
-                            <a href="${googleUrl}" target="_blank" class="btn btn-google">G 구글</a>
-                            <a href="${tmapUrl}" target="_blank" class="btn btn-tmap">T 티맵</a>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-    </script>
-
+var tk=0, tm=0, h='';
+for(var i=0; i<data.length; i++){
+    var v = data[i];
+    tk += v.km;
+    tm += v.min;
+    var u = 'https://map.kakao.com/link/to/' + encodeURIComponent(v.to) + ',' + v.toY + ',' + v.toX + '/from/' + encodeURIComponent(v.from) + ',' + v.fromY + ',' + v.fromX;
+    h += '<div class="section"><div class="section-title">' + (i+1) + '. ' + v.from + ' ➔ ' + v.to + '</div><div class="section-info">' + v.km.toFixed(1) + 'km / 약 ' + Math.round(v.min) + '분</div><a href="' + u + '" class="navi-btn" target="_blank">🚗 길찾기</a></div>';
+}
+document.getElementById('rl').innerHTML = h;
+document.getElementById('st').textContent = '총 ' + data.length + '개소 | ' + tk.toFixed(1) + 'km | 약 ' + Math.round(tm) + '분';
+})();
+</script>
 </body>
 </html>
