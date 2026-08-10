@@ -785,7 +785,8 @@
     "address": "서울 용산구 소월로30길 7-5",
     "lat": 37.5459251069269,
     "lng": 126.988228752168,
-    "favorite": false
+    "favorite": false,
+    "remark": "비고 테스트"
   },
   {
     "id": "msh04zrwinsz4",
