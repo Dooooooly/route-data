@@ -7719,14 +7719,5 @@
     "address": "서울 용산구 우사단로4길 36-10",
     "lat": 37.531084409139,
     "lng": 126.99857481904
-  },
-  {
-    "id": "mso8imtwxe0nt",
-    "name": "테스트입니다",
-    "address": "1",
-    "lat": 0,
-    "lng": 0,
-    "remark": "1",
-    "favorite": false
   }
 ]
