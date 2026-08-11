@@ -7,5 +7,14 @@
     "lng": 126.482090551648,
     "remark": "125",
     "favorite": false
+  },
+  {
+    "id": "mso8mmiv6gea2",
+    "name": "업로드 테스트",
+    "address": "서울 강동구 진황도로 122",
+    "lat": 37.5345602162132,
+    "lng": 127.139459889496,
+    "remark": "151",
+    "favorite": false
   }
 ]
