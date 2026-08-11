@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": "mso4adcyemdup",
+    "name": "1",
+    "address": "1",
+    "lat": 0,
+    "lng": 0,
+    "remark": "1",
+    "favorite": false
+  }
+]
