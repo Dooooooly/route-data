@@ -6735,7 +6735,8 @@
     "name": "교지14-78",
     "address": "한남대로20길 47-32",
     "lat": 0,
-    "lng": 0
+    "lng": 0,
+    "remark": ""
   },
   {
     "id": "msh04zsn0elf8",
