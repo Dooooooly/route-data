@@ -8522,9 +8522,10 @@
   {
     "id": "msmqm8dnf6k93",
     "name": "자치03-27(A1)",
-    "address": "갈월동 3-19",
+    "address": "갈월동3-19",
     "lat": 0,
-    "lng": 0
+    "lng": 0,
+    "remark": ""
   },
   {
     "id": "msmqm8dnah3j7",
