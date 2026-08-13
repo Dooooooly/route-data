@@ -1727,9 +1727,10 @@
   {
     "id": "msh04zryiikgf",
     "name": "자치04-32",
-    "address": "청파로43라길 44",
+    "address": "청파로43길 44",
     "lat": 0,
-    "lng": 0
+    "lng": 0,
+    "remark": ""
   },
   {
     "id": "msh04zrywjwk9",
