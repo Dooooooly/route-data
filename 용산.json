@@ -10921,5 +10921,14 @@
     "address": "서울 용산구 보광로32길 16",
     "lat": 37.5298934557397,
     "lng": 126.997922959338
+  },
+  {
+    "id": "msqvl8vhqi52d",
+    "name": "자치05-58",
+    "address": "",
+    "lat": 0,
+    "lng": 0,
+    "remark": "",
+    "favorite": false
   }
 ]
