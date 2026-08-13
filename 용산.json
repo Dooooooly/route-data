@@ -10322,9 +10322,10 @@
   {
     "id": "msmqm8e57fxdx",
     "name": "자치13-28(A1)",
-    "address": "이태원2동 192-32",
+    "address": "이태원동 192-32",
     "lat": 0,
-    "lng": 0
+    "lng": 0,
+    "remark": ""
   },
   {
     "id": "msmqm8e5tq3ae",
