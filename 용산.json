@@ -5536,9 +5536,10 @@
   {
     "id": "msh04zsf511sy",
     "name": "교지12-26",
-    "address": "이태원로 197",
+    "address": "이태원로197",
     "lat": 0,
-    "lng": 0
+    "lng": 0,
+    "remark": ""
   },
   {
     "id": "msh04zsfp3gt8",
