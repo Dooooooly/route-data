@@ -2766,9 +2766,10 @@
   {
     "id": "msh04zs1ze2tx",
     "name": "자치05-58",
-    "address": "백범로90다길 43",
-    "lat": 0,
-    "lng": 0
+    "address": "서울 용산구 백범로90다길 43",
+    "lat": null,
+    "lng": null,
+    "remark": ""
   },
   {
     "id": "msh04zs1fn81c",
@@ -8993,9 +8994,10 @@
   {
     "id": "msmqm8dr5etaz",
     "name": "자치04-84(A1)",
-    "address": "서계동 3-103",
-    "lat": 0,
-    "lng": 0
+    "address": "서울 용산구 청파로85길 41-3",
+    "lat": 37.5525564816852,
+    "lng": 126.966662680176,
+    "remark": ""
   },
   {
     "id": "msmqm8dsyh63j",
