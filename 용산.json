@@ -10255,9 +10255,10 @@
   {
     "id": "msmqm8e5rmfkh",
     "name": "자치13-23(A1)",
-    "address": "이태원2동 5-26 필린핀대사관 뒤",
+    "address": "이태원2동 5-26",
     "lat": 0,
-    "lng": 0
+    "lng": 0,
+    "remark": ""
   },
   {
     "id": "msmqm8e5zjgsf",
