@@ -4562,9 +4562,10 @@
   {
     "id": "msh04zs9ozufp",
     "name": "자치09-83",
-    "address": "한강대로54길 30",
+    "address": "한강대로54길 60",
     "lat": 0,
-    "lng": 0
+    "lng": 0,
+    "remark": ""
   },
   {
     "id": "msh04zs9590sl",
