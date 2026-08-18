@@ -10,10 +10,11 @@
   {
     "id": "msh04zruvkmh1",
     "name": "고소차",
-    "address": "서울 용산구 원효로83길 13-9",
-    "lat": 37.539884227066,
-    "lng": 126.967402212758,
-    "favorite": true
+    "address": "서울 용산구 원효로83길 13",
+    "lat": 37.5401134271585,
+    "lng": 126.967677973099,
+    "favorite": true,
+    "remark": ""
   },
   {
     "id": "msh04zrudtihk",
