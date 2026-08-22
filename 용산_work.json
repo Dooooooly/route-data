@@ -7,6 +7,19 @@
     "네트워크",
     "기타"
   ],
-  "workHistory": [],
-  "lastUpdated": "2026-08-22T01:18:48.020Z"
+  "workHistory": [
+    {
+      "id": "mt3ox1ymo0r6p",
+      "date": "2026-08-22",
+      "time": "10:19",
+      "timestamp": 1787361549358,
+      "placeName": "자치01-03",
+      "dong": "",
+      "worker": "미설정",
+      "category": "전원설비",
+      "content": "짗",
+      "fromStats": false
+    }
+  ],
+  "lastUpdated": "2026-08-22T01:19:09.358Z"
 }
