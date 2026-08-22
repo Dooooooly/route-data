@@ -7,19 +7,6 @@
     "네트워크",
     "기타"
   ],
-  "workHistory": [
-    {
-      "id": "mt3owlhwqjtmq",
-      "date": "2026-08-22",
-      "time": "10:18",
-      "timestamp": 1787361528020,
-      "placeName": "자치01-01",
-      "dong": "",
-      "worker": "미설정",
-      "category": "전원설비",
-      "content": "차단기교체",
-      "fromStats": false
-    }
-  ],
+  "workHistory": [],
   "lastUpdated": "2026-08-22T01:18:48.020Z"
 }
