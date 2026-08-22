@@ -9,90 +9,17 @@
   ],
   "workHistory": [
     {
-      "id": "mt3m3n136je8h0",
+      "id": "mt3owlhwqjtmq",
       "date": "2026-08-22",
-      "time": "09:00",
-      "timestamp": 1787356817751,
-      "placeName": "자치02-09",
-      "dong": "용산동2가",
-      "worker": "이준형",
-      "category": "카메라",
-      "content": "123",
-      "fromStats": true,
-      "updatedAt": "2026-08-22T00:34:08.608Z"
-    },
-    {
-      "id": "mt3m3n13r7f9t1",
-      "date": "2026-08-22",
-      "time": "09:00",
-      "timestamp": 1787356817751,
-      "placeName": "자치02-02",
-      "dong": "용산동2가",
-      "worker": "이준형",
-      "category": "",
-      "content": "",
-      "fromStats": true
-    },
-    {
-      "id": "mt3m3n13ir1ew2",
-      "date": "2026-08-22",
-      "time": "09:00",
-      "timestamp": 1787356817751,
-      "placeName": "교행01-29",
-      "dong": "후암동",
-      "worker": "이준형",
-      "category": "",
-      "content": "",
-      "fromStats": true
-    },
-    {
-      "id": "mt3m3n13xky543",
-      "date": "2026-08-22",
-      "time": "09:00",
-      "timestamp": 1787356817751,
-      "placeName": "자치01-60",
-      "dong": "후암동",
-      "worker": "이준형",
-      "category": "",
-      "content": "",
-      "fromStats": true
-    },
-    {
-      "id": "mt3m3n13su4bc4",
-      "date": "2026-08-22",
-      "time": "09:00",
-      "timestamp": 1787356817751,
-      "placeName": "자치01-60",
-      "dong": "후암동",
-      "worker": "이준형",
-      "category": "",
-      "content": "",
-      "fromStats": true
-    },
-    {
-      "id": "mt3m3n13wcam85",
-      "date": "2026-08-22",
-      "time": "09:00",
-      "timestamp": 1787356817751,
-      "placeName": "교지03-09",
-      "dong": "갈월동",
-      "worker": "이준형",
-      "category": "",
-      "content": "",
-      "fromStats": true
-    },
-    {
-      "id": "mt3m3n13td47d6",
-      "date": "2026-08-22",
-      "time": "09:00",
-      "timestamp": 1787356817751,
-      "placeName": "자치04-09",
-      "dong": "청파동2가",
-      "worker": "이준형",
-      "category": "",
-      "content": "",
-      "fromStats": true
+      "time": "10:18",
+      "timestamp": 1787361528020,
+      "placeName": "자치01-01",
+      "dong": "",
+      "worker": "미설정",
+      "category": "전원설비",
+      "content": "차단기교체",
+      "fromStats": false
     }
   ],
-  "lastUpdated": "2026-08-22T00:00:17.751Z"
+  "lastUpdated": "2026-08-22T01:18:48.020Z"
 }
